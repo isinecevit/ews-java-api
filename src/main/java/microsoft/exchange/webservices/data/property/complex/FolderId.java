@@ -111,8 +111,9 @@ public final class FolderId extends ServiceId {
   public void writeAttributesToXml(EwsServiceXmlWriter writer)
       throws ServiceXmlSerializationException {
     if (this.getFolderName() != null) {
+      // this line is modified due to differences between the letters "i" and "I" in the Turkish language
       writer.writeAttributeValue(XmlAttributeNames.Id, this
-          .getFolderName().toString().toLowerCase());
+          .getFolderName().toString().toLowerCase(Locale.ENGLISH));
 
       if (this.mailbox != null) {
         try {
